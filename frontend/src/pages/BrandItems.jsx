@@ -11,9 +11,11 @@ const BrandItems = () => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const res = await fetch(`/api/items/brand/${brandId}`);
+        // const res = await fetch(`/api/items/brand/${brandId}`);
         // const res = await fetch(`http://localhost:5000/api/items/brand/${brandId}`);
+        const API = import.meta.env.VITE_API_URL;
 
+        const res = await fetch(`${API}/api/items/brand/${brandId}`);
         const data = await res.json();
 
         // Fix: destructure object

@@ -9,7 +9,11 @@ const Home = () => {
 
   useEffect(() => {
     const fetchBrands = async () => {
-      const res = await fetch("http://localhost:5000/api/brands");
+      // const res = await fetch("http://localhost:5000/api/brands");
+      const API = import.meta.env.VITE_API_URL;
+
+      const res = await fetch(`${API}/api/brands`);
+      // const res = await fetch("https://jjimpex-backend.onrender.com/api/brands");
       const data = await res.json();
       setBrands(data);
     };
