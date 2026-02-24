@@ -22,7 +22,7 @@ const FeedbackForm = ({ close }) => {
       // 1️⃣ Save to database
       const API = import.meta.env.VITE_API_URL;
 
-      await axios.post(`${API}/api/contact`, formData)
+      await axios.post(`${API}/api/feedback`, formData)
       // await axios.post("http://localhost:5000/api/feedback", form);
 
       // 2️⃣ Send email
