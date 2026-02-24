@@ -20,7 +20,10 @@ const FeedbackForm = ({ close }) => {
       setLoading(true);
 
       // 1️⃣ Save to database
-      await axios.post("http://localhost:5000/api/feedback", form);
+      const API = import.meta.env.VITE_API_URL;
+
+      await axios.post(`${API}/api/contact`, formData)
+      // await axios.post("http://localhost:5000/api/feedback", form);
 
       // 2️⃣ Send email
       await emailjs.send(

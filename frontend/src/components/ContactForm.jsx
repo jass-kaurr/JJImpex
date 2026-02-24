@@ -116,8 +116,12 @@ const handleSubmit = async (e) => {
     setLoading(true);
 
     // 1️⃣ Save in database
-    await axios.post("http://localhost:5000/api/contact", form);
+    // await axios.post("http://localhost:5000/api/contact", form);
 
+    const API = import.meta.env.VITE_API_URL;
+
+    await axios.post(`${API}/api/contact`, form)
+    
     // 2️⃣ Send email
     await emailjs.send(
       "service_3v6bck8",
