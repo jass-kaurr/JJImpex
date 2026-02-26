@@ -1,68 +1,29 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-
-// const Navbar = () => {
-//   const [open, setOpen] = useState(false);
-
-//   // Smooth scroll to section
-//   const scrollToSection = (id) => {
-//     setOpen(false); // close hamburger on click
-//     const element = document.querySelector(id);
-//     if (element) {
-//       element.scrollIntoView({ behavior: "smooth" });
-//     }
-//   };
-
-//   return (
-//     <nav className="navbar">
-//       {/* Logo linked to home page */}
-//       <div className="logo">
-//         <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-//           JJImpex
-//         </Link>
-//       </div>
-
-//       {/* Hamburger icon for mobile */}
-//       <div className="hamburger" onClick={() => setOpen(!open)}>
-//         <div className={`bar ${open ? "open" : ""}`}></div>
-//         <div className={`bar ${open ? "open" : ""}`}></div>
-//         <div className={`bar ${open ? "open" : ""}`}></div>
-//       </div>
-
-//       <ul className={`nav-links ${open ? "open" : ""}`}>
-//         <li>
-//           <button
-//             onClick={() => scrollToSection("#about")}
-//           >
-//             About Us
-//           </button>
-//         </li>
-//         <li>
-//           <button
-//             onClick={() => scrollToSection("#brands")}
-//           >
-//             Brands We Deal In
-//           </button>
-//         </li>
-//         <li>
-//           <button
-//             onClick={() => scrollToSection("#contact")}
-//           >
-//             Contact Us
-//           </button>
-//         </li>
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(true);
   const location = useLocation();
+  
+  useEffect(() => {
+    let lastScroll = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > lastScroll && currentScroll > 80) {
+        setShow(false); // scrolling down
+      } else {
+        setShow(true); // scrolling up
+      }
+
+      lastScroll = currentScroll;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (id) => {
     setOpen(false);
@@ -80,9 +41,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
+    // <nav className="navbar">
+    <nav className={`navbar ${show ? "show" : "hide"}`}>
       <div className="logo">
-        <Link to="/">JJImpex</Link>
+        {/* <Link to="/">JJImpex</Link> */}
+        <h4>JJ Impex</h4>
       </div>
 
       {/* Hamburger */}
@@ -94,6 +57,11 @@ const Navbar = () => {
 
       {/* Offcanvas Menu */}
       <ul className={`nav-links ${open ? "open" : ""}`}>
+        <li>
+          <span onClick={() => scrollToSection("#")}>
+            Home
+          </span>
+        </li>
         <li>
           <span onClick={() => scrollToSection("#about")}>
             About Us

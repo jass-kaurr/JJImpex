@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import BrandCard from "../components/BrandCard.jsx";
 
-
 const Home = () => {
   const [brands, setBrands] = useState([]);
 
@@ -13,31 +12,151 @@ const Home = () => {
       const API = import.meta.env.VITE_API_URL;
 
       const res = await fetch(`${API}/api/brands`);
-      // const res = await fetch("https://jjimpex-backend.onrender.com/api/brands");
       const data = await res.json();
       setBrands(data);
     };
     fetchBrands();
+
+    const counters = document.querySelectorAll(".counter");
+
+    counters.forEach((counter) => {
+      counter.innerText = "0";
+
+      const updateCounter = () => {
+        const target = +counter.getAttribute("data-target");
+        const current = +counter.innerText;
+
+        const increment = target / 100;
+
+        if (current < target) {
+          counter.innerText = `${Math.ceil(current + increment)}`;
+          setTimeout(updateCounter, 20);
+        } else {
+          counter.innerText = `${target}+`;
+        }
+      };
+
+      updateCounter();
+    });
   }, []);
 
   return (
-    <div>
+    <div className="page-wrapper">
       <Navbar />
-      <header>
-        <h1>Welcome to JJImpex</h1>
+
+      {/* HERO */}
+      <header className="hero section">
+        <div className="container hero-wrapper">
+          <div className="hero-content">
+            <span className="hero-subtitle">Premium Import Solutions</span>
+            <h1>Best Quality Products for Your Business</h1>
+            <p>
+              JJImpex delivers trusted international brands and premium-quality
+              products to help your business grow faster and smarter.
+            </p>
+
+            <div className="hero-buttons">
+              <button
+                className="primary-btn"
+                onClick={() =>
+                  document
+                    .getElementById("brands")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Explore Brands
+              </button>
+
+              <button
+                className="secondary-btn"
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+              >
+                Contact Us
+              </button>
+            </div>
+          </div>
+
+          {/* <div className="hero-image">
+            <img
+              src="../../public/assets/brands/vedica.png"
+              alt="Premium products"
+            />
+          </div> */}
+        </div>
       </header>
 
-      <section id="about">
-        <h2>About Us</h2>
-        <p>We are a leading supplier of premium products for your business...</p>
+      {/* ABOUT */}
+      <section id="about" className="section about-section">
+        <div className="container">
+          <div className="about-main">
+            <h2>About JJImpex</h2>
+            <p>
+              JJImpex connects global brands with growing businesses through
+              trusted sourcing, premium quality, and reliable distribution. We
+              focus on long-term partnerships and consistent excellence.
+            </p>
+          </div>
+
+          {/* Counters */}
+          <div className="about-counters">
+            <div className="counter-box">
+              <h3 className="counter" data-target="10">
+                0
+              </h3>
+              <p>Global Brands</p>
+            </div>
+
+            <div className="counter-box">
+              <h3 className="counter" data-target="500">
+                0
+              </h3>
+              <p>Happy Clients</p>
+            </div>
+
+            <div className="counter-box">
+              <h3 className="counter" data-target="15">
+                0
+              </h3>
+              <p>Years Experience</p>
+            </div>
+          </div>
+
+          {/* Mission & Vision */}
+          <div className="mission-vision">
+            <div className="mv-box">
+              <div className="mv-icon">🎯</div>
+              <h3>Our Mission</h3>
+              <p>
+                Deliver premium international products with reliability,
+                transparency, and efficiency.
+              </p>
+            </div>
+
+            <div className="mv-box">
+              <div className="mv-icon">🚀</div>
+              <h3>Our Vision</h3>
+              <p>
+                Become a leading global sourcing partner empowering businesses
+                to grow smarter.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="brands">
-        <h2>Brands We Deal In</h2>
-        <div className="brand-list">
-          {brands.map((brand) => (
-            <BrandCard key={brand._id} brand={brand} />
-          ))}
+      {/* BRANDS */}
+      <section id="brands" className="section">
+        <div className="container">
+          <h2>Brands We Deal In</h2>
+          <div className="brand-list">
+            {brands.map((brand) => (
+              <BrandCard key={brand._id} brand={brand} />
+            ))}
+          </div>
         </div>
       </section>
 

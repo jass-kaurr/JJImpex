@@ -33,17 +33,18 @@ const BrandItems = () => {
     <div>
       <Navbar />
 
-      <h1>{brandName ? `${brandName} Items` : "Items"}</h1>
+      {/* <h1>{brandName ? `${brandName} Items` : "Items"}</h1> */}
+      <div className="brand-items-header">
+        <h1>{brandName ? `${brandName} Items` : "Items"}</h1>
+      </div>
       <div className="items-list">
-  {items.length > 0 ? (
-    items.map((item) => (
-      <div key={item._id} className="item-row">
-        <img src={`/assets/brands/${item.image}`} alt={item.name} />
-        <div className="item-info">
-          <h3>{item.name}</h3>
-          <p>{item.description}</p>
-        </div>
-
+      {items.length > 0 ? (items.map((item) => (
+          <div key={item._id} className="item-row">
+            <img src={`/assets/brands/${item.image}`} alt={item.name} />
+            <div className="item-info">
+              <h3>{item.name}</h3>
+              <p>{item.description}</p>
+            </div>
       </div>
     ))
   ) : (
