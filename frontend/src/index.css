@@ -274,7 +274,7 @@ section h2 {
   max-width: 750px;
   margin: 0 auto;
   text-align: center;
-  border-left: 3px solid #0d6efd;
+  border-left: 3px solid #2f6f3e;
   padding-left: 20px;
 }
 
@@ -305,7 +305,7 @@ section h2 {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #0d6efd, #6c63ff);
+  background: linear-gradient(135deg, #179f59, #004112);
   opacity: 0.08;   
   z-index: -1;
   border-radius: 16px;
@@ -317,7 +317,7 @@ section h2 {
 
 .counter-box h3 {
   font-size: 2.4rem;
-  color: #0d6efd;
+  color: #2f6f3e;
   font-weight: 700;
 }
 

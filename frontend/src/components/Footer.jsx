@@ -17,22 +17,12 @@ const Footer = () => {
       <div className="footer-left">
         <div className="quick-links">
           <h4>Quick Links</h4>
-          {/* <ul>
+          <ul>
             <li>About Us</li>
             <li>Brands</li>
             <li>Contact</li>
-          </ul> */}
-          <ul>
-  <li onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}>
-    About Us
-  </li>
-  <li onClick={() => document.getElementById("brands")?.scrollIntoView({ behavior: "smooth" })}>
-    Brands
-  </li>
-  <li onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
-    Contact
-  </li>
-</ul>
+          </ul>
+
         </div>
 
         <div className="business-details">
