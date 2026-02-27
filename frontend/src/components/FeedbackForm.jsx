@@ -7,7 +7,7 @@ const FeedbackForm = ({ close }) => {
     name: "",
     email: "",
     rating: 5,
-    comments: ""
+    comments: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ const FeedbackForm = ({ close }) => {
       // 1️⃣ Save to database
       const API = import.meta.env.VITE_API_URL;
 
-      await axios.post(`${API}/api/feedback`, form)
+      await axios.post(`${API}/api/feedback`, form);
       // await axios.post("http://localhost:5000/api/feedback", form);
 
       // 2️⃣ Send email
@@ -30,7 +30,7 @@ const FeedbackForm = ({ close }) => {
         "service_3v6bck8",
         "template_tbty15s",
         form,
-        "17S-3Wlzk1RdFeigW"
+        "17S-3Wlzk1RdFeigW",
       );
 
       setSuccess(true);
@@ -39,7 +39,6 @@ const FeedbackForm = ({ close }) => {
         setSuccess(false);
         close();
       }, 2500);
-
     } catch (err) {
       console.log(err);
     } finally {
@@ -52,8 +51,38 @@ const FeedbackForm = ({ close }) => {
       <div className="premium-modal">
         {success ? (
           <div className="success-animation">
-            <div className="checkmark"></div>
+            {/* Accent Ring */}
+            <div className="accent-ring"></div>
+
+            {/* SVG Checkmark */}
+            <div className="success-icon">
+              <svg className="checkmark-svg" viewBox="0 0 52 52">
+                <circle
+                  className="checkmark-circle"
+                  cx="26"
+                  cy="26"
+                  r="25"
+                  fill="none"
+                />
+                <path
+                  className="checkmark-check"
+                  fill="none"
+                  d="M14 27l7 7 16-16"
+                />
+              </svg>
+            </div>
+
             <h3>Feedback Submitted Successfully!</h3>
+
+            {/* Progress Bar */}
+            <div className="progress-bar"></div>
+
+            {/* Confetti */}
+            <div className="confetti-wrapper">
+              {Array.from({ length: 15 }).map((_, i) => (
+                <span key={i} className="confetti"></span>
+              ))}
+            </div>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
@@ -63,7 +92,7 @@ const FeedbackForm = ({ close }) => {
               type="text"
               placeholder="Full Name"
               value={form.name}
-              onChange={e => setForm({ ...form, name: e.target.value })}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               required
             />
 
@@ -71,24 +100,26 @@ const FeedbackForm = ({ close }) => {
               type="email"
               placeholder="Email Address"
               value={form.email}
-              onChange={e => setForm({ ...form, email: e.target.value })}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               required
             />
 
             <label>Rating</label>
             <select
               value={form.rating}
-              onChange={e => setForm({ ...form, rating: e.target.value })}
+              onChange={(e) => setForm({ ...form, rating: e.target.value })}
             >
-              {[5, 4, 3, 2, 1].map(n => (
-                <option key={n} value={n}>{n}</option>
+              {[5, 4, 3, 2, 1].map((n) => (
+                <option key={n} value={n}>
+                  {n}
+                </option>
               ))}
             </select>
 
             <textarea
               placeholder="Your Comments"
               value={form.comments}
-              onChange={e => setForm({ ...form, comments: e.target.value })}
+              onChange={(e) => setForm({ ...form, comments: e.target.value })}
             />
 
             <button type="submit" disabled={loading}>

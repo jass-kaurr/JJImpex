@@ -5,7 +5,6 @@ const BrandCard = ({ brand }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    // Navigate to brand page using brand _id (slug)
     navigate(`/brand/${brand._id}`);
   };
 

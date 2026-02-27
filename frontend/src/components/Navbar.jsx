@@ -5,7 +5,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(true);
   const location = useLocation();
-  
+
   useEffect(() => {
     let lastScroll = window.scrollY;
 
@@ -58,14 +58,10 @@ const Navbar = () => {
       {/* Offcanvas Menu */}
       <ul className={`nav-links ${open ? "open" : ""}`}>
         <li>
-          <span onClick={() => scrollToSection("#")}>
-            Home
-          </span>
+          <span onClick={() => scrollToSection("#")}>Home</span>
         </li>
         <li>
-          <span onClick={() => scrollToSection("#about")}>
-            About Us
-          </span>
+          <span onClick={() => scrollToSection("#about")}>About Us</span>
         </li>
 
         <li>
@@ -75,14 +71,14 @@ const Navbar = () => {
         </li>
 
         <li>
-          <span onClick={() => scrollToSection("#contact")}>
-            Contact Us
-          </span>
+          <span onClick={() => scrollToSection("#contact")}>Contact Us</span>
         </li>
       </ul>
 
       {/* Overlay for mobile */}
-      {open && <div className="nav-overlay" onClick={() => setOpen(false)}></div>}
+      {open && (
+        <div className="nav-overlay" onClick={() => setOpen(false)}></div>
+      )}
     </nav>
   );
 };

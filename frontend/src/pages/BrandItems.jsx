@@ -7,14 +7,19 @@ const BrandItems = () => {
   const { brandId } = useParams();
   const [items, setItems] = useState([]);
   const [brandName, setBrandName] = useState("");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [brandId]);
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        // const res = await fetch(`/api/items/brand/${brandId}`);
-        // const res = await fetch(`http://localhost:5000/api/items/brand/${brandId}`);
+        // const res = await fetch(
+        //   `http://localhost:5000/api/items/brand/${brandId}`,
+        // );
         const API = import.meta.env.VITE_API_URL;
-
         const res = await fetch(`${API}/api/items/brand/${brandId}`);
         const data = await res.json();
 
@@ -23,6 +28,8 @@ const BrandItems = () => {
         setItems(data.items);
       } catch (err) {
         console.error("Failed to fetch items:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -32,27 +39,31 @@ const BrandItems = () => {
   return (
     <div>
       <Navbar />
-
-      {/* <h1>{brandName ? `${brandName} Items` : "Items"}</h1> */}
       <div className="brand-items-header">
         <h1>{brandName ? `${brandName} Items` : "Items"}</h1>
       </div>
-      <div className="items-list">
-      {items.length > 0 ? (items.map((item) => (
-          <div key={item._id} className="item-row">
-            <img src={`/assets/brands/${item.image}`} alt={item.name} />
-            <div className="item-info">
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-            </div>
-      </div>
-    ))
-  ) : (
-    <p>No items found for this brand.</p>
-  )}
-</div>
+      {loading ? (
+        <div className="loader-wrapper">
+          <span className="loader"></span>
+        </div>
+      ) : (
+        <div className="items-list">
+          {items.length > 0 ? (
+            items.map((item) => (
+              <div key={item._id} className="item-row">
+                <img src={`/assets/brands/${item.image}`} alt={item.name} />
+                <div className="item-info">
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <p>No items found for this brand.</p>
+          )}
+        </div>
+      )}
       <Footer />
-
     </div>
   );
 };

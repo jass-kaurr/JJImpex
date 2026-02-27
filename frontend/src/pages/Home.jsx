@@ -5,15 +5,22 @@ import BrandCard from "../components/BrandCard.jsx";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBrands = async () => {
-      // const res = await fetch("http://localhost:5000/api/brands");
-      const API = import.meta.env.VITE_API_URL;
+      try {
+        // const res = await fetch("http://localhost:5000/api/brands");
+        const API = import.meta.env.VITE_API_URL;
 
-      const res = await fetch(`${API}/api/brands`);
-      const data = await res.json();
-      setBrands(data);
+        const res = await fetch(`${API}/api/brands`);
+        const data = await res.json();
+        setBrands(data);
+      } catch (error) {
+        console.error("Failed to fetch brands:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchBrands();
 
@@ -79,13 +86,6 @@ const Home = () => {
               </button>
             </div>
           </div>
-
-          {/* <div className="hero-image">
-            <img
-              src="../../public/assets/brands/vedica.png"
-              alt="Premium products"
-            />
-          </div> */}
         </div>
       </header>
 
@@ -152,11 +152,17 @@ const Home = () => {
       <section id="brands" className="section">
         <div className="container">
           <h2>Brands We Deal In</h2>
-          <div className="brand-list">
-            {brands.map((brand) => (
-              <BrandCard key={brand._id} brand={brand} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="loader-wrapper">
+              <span className="loader"></span>
+            </div>
+          ) : (
+            <div className="brand-list">
+              {brands.map((brand) => (
+                <BrandCard key={brand._id} brand={brand} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
