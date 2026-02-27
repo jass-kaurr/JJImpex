@@ -692,7 +692,7 @@ footer::after {
 }
 
 /* WhatsApp CTA */
-.whatsapp-btn {
+/* .whatsapp-btn {
   margin-top: 15px;
   display: flex;
   align-items: center;
@@ -712,6 +712,46 @@ footer::after {
   background: #1ebe5d;
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+} */
+
+.whatsapp-btn {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: #25D366;
+  color: white;
+
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+
+  white-space: nowrap;        /* 🔥 Prevent line break */
+  width: 100%;                /* Full width */
+  box-sizing: border-box;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 400px) {
+  .whatsapp-btn {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+}
+
+.whatsapp-btn span,
+.whatsapp-btn svg {
+  flex-shrink: 0;
 }
 
 .whatsapp-icon {
