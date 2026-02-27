@@ -49,7 +49,7 @@ const Footer = () => {
           Feedback
         </button>
         <a
-  href="https://wa.me/+918826411320?text=Hello,%0AI%20am%20reaching%20out%20to%20inquire%20about%20your%20available%20brands%20and%20bulk%20order%20options.%20Please%20let%20me%20know%20the%20next%20steps%20and%20relevant%20details.%0ALooking%20forward%20to%20your%20response."
+  href="https://wa.me/+918826411312?text=Hello,%0AI%20am%20reaching%20out%20to%20inquire%20about%20your%20available%20brands%20and%20bulk%20order%20options.%20Please%20let%20me%20know%20the%20next%20steps%20and%20relevant%20details.%0ALooking%20forward%20to%20your%20response."
   target="_blank"
   rel="noopener noreferrer"
   className="whatsapp-btn"
