@@ -691,6 +691,33 @@ footer::after {
   color: #c8d8cd;
 }
 
+/* WhatsApp CTA */
+.whatsapp-btn {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  font-size: 18px;
+}
+
 /* ================= FORM MODAL ================= */
 
 /* Overlay */
