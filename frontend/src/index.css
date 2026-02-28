@@ -772,6 +772,79 @@ footer::after {
   z-index: 999;
 }
 
+.error {
+  color: #ff4d4f;       /* Strong red */
+  font-size: 13px;
+  margin-top: 4px;
+  display: block;
+}
+/* Fix country name text color */
+.react-tel-input .country-list .country {
+  color: #333 !important;   /* dark grey */
+}
+
+/* Optional: search input text */
+.react-tel-input .country-list .search-box {
+  color: #333 !important;
+}
+
+/* ===== Compact Rating Section ===== */
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;              
+  margin: -10px 0 -10px 0;   
+}
+
+.star {
+  font-size: 50px;      
+  cursor: pointer;
+  color: #ccc;
+  transition: all 0.25s ease;
+}
+
+.star.active {
+  color: #ffb400;
+  text-shadow:
+    0 0 6px #ffb400,
+    0 0 14px #ffd54f,
+    0 0 25px #ffe082;
+  animation: sparkle 1.2s infinite alternate;
+}
+
+.star:hover {
+  transform: scale(1.15);
+}
+
+/* Bigger emoji */
+.rating-emoji {
+  display: flex;              /* force centering */
+  justify-content: center;    /* horizontal center */
+  align-items: center;        /* vertical alignment */
+  width: 100%;
+  font-size: 48px;            /* bigger than stars */
+  margin: 6px 0 10px 0;       /* compact spacing */
+  line-height: 1;
+  text-align: center;
+}
+
+/* Glitter animation */
+@keyframes sparkle {
+  from {
+    text-shadow:
+      0 0 6px #ffb400,
+      0 0 14px #ffd54f;
+  }
+  to {
+    text-shadow:
+      0 0 12px #ffd54f,
+      0 0 25px #fff176,
+      0 0 35px #fff9c4;
+  }
+}
+
 .premium-modal {
   background: #ffffff;
   border-radius: 16px;
@@ -834,6 +907,8 @@ footer::after {
 .close-btn {
   background: #e0e0e0;
 }
+
+
 
 /* ================= SUCCESS ANIMATION ================= */
 
