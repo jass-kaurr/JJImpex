@@ -47,42 +47,25 @@ const BrandItems = () => {
           <span className="loader"></span>
         </div>
       ) : (
-        // <div className="items-list">
-        //   {items.length > 0 ? (
-        //     items.map((item) => (
-        //       // <div key={item._id} className="item-row">
-        //       //   <img src={`/assets/brands/${item.image}`} alt={item.name} />
-        //       //   <div className="item-info">
-        //       //     <h3>{item.name}</h3>
-        //       //     <p>{item.description}</p>
-        //       //   </div>
-        //       // </div>
-        //       <div key={item._id} className="item-card">
-        //         <div className="item-image">
-        //           <img src={`/assets/brands/${item.image}`} alt={item.name} />
-        //         </div>
-        //         <h3 className="item-title">{item.name}</h3>
-        //       </div>
-        //     ))
-        //   ) : (
-        //     <p>No items found for this brand.</p>
-        //   )}
-        // </div>
         <div className="items-list">
-  {items.length > 0 ? (
-    items.map((item, index) => (
-      <div key={item._id} className="item-card" style={{ animationDelay: `${index * 0.1}s` }}>
-        <div className="item-image-wrapper">
-          <img src={`/assets/brands/${item.image}`} alt={item.name} />
-          <div className="glow"></div>
+          {items.length > 0 ? (
+            items.map((item, index) => (
+              <div
+                key={item._id}
+                className="item-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="item-image-wrapper">
+                  <img src={`/assets/brands/${item.image}`} alt={item.name} />
+                  <div className="glow"></div>
+                </div>
+                <h3>{item.name}</h3>
+              </div>
+            ))
+          ) : (
+            <p>No items found for this brand.</p>
+          )}
         </div>
-        <h3>{item.name}</h3>
-      </div>
-    ))
-  ) : (
-    <p>No items found for this brand.</p>
-  )}
-</div>
       )}
       <Footer />
     </div>
