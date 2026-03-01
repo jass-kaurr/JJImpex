@@ -174,9 +174,9 @@ const FeedbackForm = ({ close }) => {
             <div className="rating-emoji">
               <span>
                 {form.rating === 1 && "😡"}
-                {form.rating === 2 && "🙂"}
-                {form.rating === 3 && "🙂"}
-                {form.rating === 4 && "😃"}
+                {form.rating === 2 && "😐"}
+                {form.rating === 3 && "😇"}
+                {form.rating === 4 && "🤗"}
                 {form.rating === 5 && "🤩"}
               </span>
             </div>

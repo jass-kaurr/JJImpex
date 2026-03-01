@@ -27,11 +27,7 @@ const AccordionSection = ({ id, title, active, toggleSection, children }) => {
         {active === id ? <FaMinus /> : <FaPlus />}
       </div>
 
-      <div
-        ref={contentRef}
-        className="footer-content"
-        style={{ height }}
-      >
+      <div ref={contentRef} className="footer-content" style={{ height }}>
         <div className="footer-inner">{children}</div>
       </div>
     </div>
@@ -50,7 +46,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-
         {/* Contact Info */}
         <AccordionSection
           id="contact"
@@ -61,8 +56,8 @@ const Footer = () => {
           <p>Phone: +91-9876543210</p>
           <p>Email: contact@jjimpex.com</p>
           <p>
-            Address: JJ Impex, B-74, Basement, Khasra No. 37/20,
-            Suraj Park, Village Samaipur, Delhi
+            Address: JJ Impex, B-74, Basement, Khasra No. 37/20, Suraj Park,
+            Village Samaipur, Delhi
           </p>
 
           <div className="footer-map">
@@ -142,16 +137,13 @@ const Footer = () => {
           active={active}
           toggleSection={toggleSection}
         >
-          {/* <Link to="/faq" style={{ textDecoration: "none" }}>
-  View Frequently Asked Questions →
-</Link> */}
-<Link
-  to="/faq"
-  style={{ textDecoration: "none" }}
-  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
->
-  View Frequently Asked Questions →
-</Link>
+          <Link
+            to="/faq"
+            style={{ textDecoration: "none" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            View Frequently Asked Questions →
+          </Link>
         </AccordionSection>
 
         {/* Always Visible Buttons */}
@@ -184,12 +176,9 @@ const Footer = () => {
             Message Us on WhatsApp
           </a>
         </div>
-
       </div>
 
-      <div className="footer-bottom">
-        © 2026 JJImpex. All rights reserved.
-      </div>
+      <div className="footer-bottom">© 2026 JJImpex. All rights reserved.</div>
 
       {showContact && <ContactForm close={() => setShowContact(false)} />}
       {showFeedback && <FeedbackForm close={() => setShowFeedback(false)} />}
