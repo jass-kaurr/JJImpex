@@ -2,10 +2,39 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import BrandCard from "../components/BrandCard.jsx";
+import BrandFilter from "../components/BrandFilter.jsx";
 
 const Home = () => {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc"); // asc | desc
+
+  const filteredBrands = brands
+    .filter((brand) =>
+      brand.name.toLowerCase().includes(debouncedSearch.toLowerCase()),
+    )
+    .sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.name.localeCompare(b.name);
+      } else {
+        return b.name.localeCompare(a.name);
+      }
+    });
+
+  const resetFilters = () => {
+    setSearchTerm("");
+    setSortOrder("asc");
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchTerm);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
 
   useEffect(() => {
     const fetchBrands = async () => {
@@ -147,7 +176,7 @@ const Home = () => {
       </section> */}
 
       {/* BRANDS */}
-      <section id="brands" className="section">
+      {/* <section id="brands" className="section">
         <div className="container">
           <h2>Brands We Deal In</h2>
           {loading ? (
@@ -158,6 +187,41 @@ const Home = () => {
             <div className="brand-list">
               {brands.map((brand) => (
                 <BrandCard key={brand._id} brand={brand} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section> */}
+
+      <section id="brands" className="section">
+        <div className="container">
+          <h2>Brands We Deal In</h2>
+
+          <BrandFilter
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            sortOrder={sortOrder}
+            setSortOrder={setSortOrder}
+            resetFilters={resetFilters}
+          />
+
+          {loading ? (
+            <div className="loader-wrapper">
+              <span className="loader"></span>
+            </div>
+          ) : filteredBrands.length === 0 ? (
+            <div className="no-results">
+              <h3>No brands found</h3>
+              <p>Try searching with a different keyword.</p>
+            </div>
+          ) : (
+            <div className="brand-list fade-in">
+              {filteredBrands.map((brand) => (
+                <BrandCard
+                  key={brand._id}
+                  brand={brand}
+                  searchTerm={debouncedSearch}
+                />
               ))}
             </div>
           )}

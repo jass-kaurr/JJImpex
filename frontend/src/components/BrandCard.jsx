@@ -1,18 +1,64 @@
+// import React from "react";
+// import { useNavigate } from "react-router-dom";
+
+// const BrandCard = ({ brand }) => {
+//   const navigate = useNavigate();
+
+//   const handleClick = () => {
+//     navigate(`/brand/${brand._id}`);
+//   };
+
+//   return (
+//     <div className="brand-card" onClick={handleClick} style={{ cursor: "pointer" }}>
+//       <img src={`/assets/brands/${brand.image}`} alt={brand.name} />
+
+//       <h3>{brand.name}</h3>
+//     </div>
+//   );
+// };
+
+// export default BrandCard;
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const BrandCard = ({ brand }) => {
+const BrandCard = ({ brand, searchTerm }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate(`/brand/${brand._id}`);
   };
 
-  return (
-    <div className="brand-card" onClick={handleClick} style={{ cursor: "pointer" }}>
-      <img src={`/assets/brands/${brand.image}`} alt={brand.name} />
+  const highlightText = (text, highlight) => {
+    if (!highlight) return text;
 
-      <h3>{brand.name}</h3>
+    const escaped = highlight.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`(${escaped})`, "gi");
+
+    return text.split(regex).map((part, index) =>
+      part.toLowerCase() === highlight.toLowerCase() ? (
+        <span key={index} className="highlight">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+  };
+
+  return (
+    <div
+      className="brand-card"
+      onClick={handleClick}
+      style={{ cursor: "pointer" }}
+    >
+      <img
+        src={`/assets/brands/${brand.image}`}
+        alt={brand.name}
+      />
+
+      <h3>
+        {highlightText(brand.name, searchTerm)}
+      </h3>
     </div>
   );
 };

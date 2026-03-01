@@ -109,7 +109,7 @@ const Navbar = () => {
   return (
     <nav ref={navbarRef} className={`navbar ${show ? "show" : "hide"}`}>
       <div className="logo">
-        <h4>JJ Impex</h4>
+        <h4 onClick={() => scrollToSection("#")}>JJ Impex</h4>
       </div>
 
       <div className="hamburger" onClick={() => setOpen(!open)}>
@@ -204,7 +204,6 @@ const Navbar = () => {
         </li>
 
         <li>
-          {/* <span onClick={() => scrollToSection("#contact")}>Contact Us</span> */}
           <span onClick={handleContactClick}>Contact Us</span>
         </li>
       </ul>
