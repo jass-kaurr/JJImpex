@@ -56,10 +56,10 @@ const Footer = () => {
           active={active}
           toggleSection={toggleSection}
         >
-          <p>Phone: +91-9876543210</p>
-          <p>Email: contact@jjimpex.com</p>
+          <p><b>Phone: </b> +91-9876543210</p>
+          <p><b>Email:</b> contact@jjimpex.com</p>
           <p>
-            Address: JJ Impex, B-74, Basement, Khasra No. 37/20, Suraj Park,
+            <b>Address:</b> JJ Impex, B-74, Basement, Khasra No. 37/20, Suraj Park,
             Village Samaipur, Delhi
           </p>
 
@@ -81,16 +81,6 @@ const Footer = () => {
           toggleSection={toggleSection}
         >
           <ul>
-            <li onClick={() => (window.location.href = "/")}>Home</li>
-            <li
-              onClick={() =>
-                document
-                  .getElementById("brands")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Collections
-            </li>
             <li
               onClick={() =>
                 document
@@ -98,7 +88,7 @@ const Footer = () => {
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              About
+              Why Choose Us
             </li>
           </ul>
         </AccordionSection>

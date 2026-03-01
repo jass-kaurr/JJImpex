@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
@@ -127,9 +127,12 @@ const Navbar = () => {
           <span onClick={() => scrollToSection("#")}>Home</span>
         </li>
 
-        <li>
+        {/* <li>
           <span onClick={() => scrollToSection("#about")}>About Us</span>
-        </li>
+        </li> */}
+        <li>
+  <Link to="/about">About Us</Link>
+</li>
 
         {/* PRODUCTS */}
         <li

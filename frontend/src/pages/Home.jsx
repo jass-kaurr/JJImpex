@@ -78,7 +78,7 @@ const Home = () => {
                 className="secondary-btn"
                 onClick={() =>
                   document
-                    .getElementById("contact")
+                    .getElementById("footer")
                     .scrollIntoView({ behavior: "smooth" })
                 }
               >
@@ -90,7 +90,7 @@ const Home = () => {
       </header>
 
       {/* ABOUT */}
-      <section id="about" className="section about-section">
+      {/* <section id="about" className="section about-section">
         <div className="container">
           <div className="about-main">
             <h2>About JJImpex</h2>
@@ -101,7 +101,6 @@ const Home = () => {
             </p>
           </div>
 
-          {/* Counters */}
           <div className="about-counters">
             <div className="counter-box">
               <h3 className="counter" data-target="10">
@@ -125,7 +124,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Mission & Vision */}
           <div className="mission-vision">
             <div className="mv-box">
               <div className="mv-icon">🎯</div>
@@ -146,7 +144,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* BRANDS */}
       <section id="brands" className="section">

@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import BrandItems from "./pages/BrandItems.jsx";
 import Faq from "./pages/Faq.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/" element={<Home />} />
       <Route path="/brand/:brandId" element={<BrandItems />} />
       <Route path="/faq" element={<Faq />} />
+      <Route path="/about" element={<AboutUs />} />
     </Routes>
   </BrowserRouter>
 );
