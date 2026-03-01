@@ -98,7 +98,24 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const navbarRef = useRef(null);
+const handleContactClick = () => {
+  setOpen(false);
+  setProductsOpen(false);
 
+  if (location.pathname !== "/") {
+    navigate("/");
+    
+    setTimeout(() => {
+      document
+        .getElementById("footer")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 300); // wait for page load
+  } else {
+    document
+      .getElementById("footer")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }
+};
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
@@ -273,7 +290,9 @@ const Navbar = () => {
         </li>
 
         <li>
-          <span onClick={() => scrollToSection("#contact")}>Contact Us</span>
+          {/* <span onClick={() => scrollToSection("#contact")}>Contact Us</span> */}
+            <span onClick={handleContactClick}>Contact Us</span>
+
         </li>
       </ul>
 

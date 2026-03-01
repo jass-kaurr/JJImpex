@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ContactForm from "./ContactForm.jsx";
 import FeedbackForm from "./FeedbackForm.jsx";
 import { FaWhatsapp } from "react-icons/fa";
@@ -8,6 +8,9 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 const AccordionSection = ({ id, title, active, toggleSection, children }) => {
   const contentRef = useRef(null);
   const [height, setHeight] = useState("0px");
+  const location = useLocation();
+
+
 
   useEffect(() => {
     if (active === id) {
@@ -44,7 +47,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer">
+    <footer id="footer" className="footer">
       <div className="footer-container">
         {/* Contact Info */}
         <AccordionSection
